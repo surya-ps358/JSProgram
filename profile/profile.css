@@ -1,0 +1,39 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+
+}
+
+header{
+    display: flex;
+    gap: 30px;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid gray;
+    background-color: black;
+    
+}
+.title{
+color: white;
+font-weight: bold;
+font-size: 25px;
+text-shadow: 1px 2px 3px ;
+    padding-left:px;
+}
+
+.info{
+     justify-content: space-between;
+}
+
+.info a{
+    text-decoration: none;
+   color: white;
+   
+}
+ img{
+    width: 18px;
+ }

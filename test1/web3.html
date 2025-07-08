@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Match Scorecard</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.match-card {
+  background: white;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  padding: 15px;
+  text-align: left;
+}
+
+.match-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.team-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+}
+
+.team img {
+  width: 20px;
+  height: 15px;
+  margin-right: 8px;
+  border: 1px solid #ddd;
+}
+
+.team-name {
+  font-weight: bold;
+}
+
+.score {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.session-info {
+  color: #b30059;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.schedule-btn {
+  margin-top: 10px;
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+  </style>
+</head>
+<body>
+  <div class="match-card">
+    <p class="match-title">2nd Test • Bangladesh tour of Sri Lanka</p>
+
+    <div class="team-score">
+      <div class="team">
+        <img src="https://flagcdn.com/w40/bd.png" alt="BAN Flag">
+        <span class="team-name">BAN</span>
+      </div>
+      <div class="score">247</div>
+    </div>
+
+    <div class="team-score">
+      <div class="team">
+        <img src="https://flagcdn.com/w40/lk.png" alt="SL Flag">
+        <span class="team-name">SL</span>
+      </div>
+      <div class="score">171-1</div>
+    </div>
+
+    <p class="session-info">Day 2: 2nd Session - Sri Lanka trail by 76</p>
+    <button class="schedule-btn">SCHEDULE</button>
+  </div>
+</body>
+</html>
