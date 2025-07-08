@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        ul li a{
+            text-decoration: none;
+        }
+        
+        header{
+            height:10vh ;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 1px 1px 15px gray;
+        }
+        header  h2 span:first-child
+        {
+            color: blue;
+        }
+        header h2 span:last-child
+        {
+            color:black;
+        }
+        header ul li{
+            padding: 10px;
+        }
+       header ul li:last-child{
+        background-color: blue;
+        border-radius: 5px;
+       } 
+       /* header ul li:nth-child(odd) a
+       {
+        color:blue;
+       }
+       header ul li:nth-child(even) a
+       {
+        color:red;
+       } */
+       a{
+        color: gray;
+       }
+         header ul li:last-child a{
+            color: white;
+         }
+         main div :nth-child(2)>img
+        {
+        height: 20px;
+        width: 10px;
+         }
+    </style>
+    <header>
+            <h2><span>Shop</span><span>Now</span></h2>
+                <ul class="menu">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Product</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">Cart(0)</a></li>
+                </ul>
+    
+    </header>
+    <main>
+        <div>
+           <img src="" alt="Casual T-Shirt">
+            <h2>Casual T-Shirt</h2>
+            <p>A comfortable and stylish t-shirt fir everyday wear.</p>
+            <p>$29.99 <span>Add to Cart</span></p>
+            
+        </div>
+        <div>
+            <img src="./assets/513Qyw5OkEL._SL1080_.jpg" alt="">
+            <p>Smartwatch Pro</p>
+            <p>advanced smartwatch with health tracking and notification.</p>
+            <p>$199.00 <span>Add to cart </span></p>
+        </div>
+        <div>
+            <img src="" alt="Urban Backpack  ">
+            <h2>Uraban Baclkpack</h2>
+            <p>Durable and spacious backpack for urabn adeventures.</p>
+            <p>$65.50 <span>Add to Cart</span></p>
+        </div>
+        <div>
+            <img src="" alt="Noise-Cancelling Headphones">
+            <h2>Noise-Cancelling Headphones</h2>
+            <p>Immersive audio with active noise cancellation.</p>
+            <p>$120.00 <span>Add to Cart</span>
+
+            </p>
+        </div>
+        <div>
+            <img src="" alt="Designer Sneakers ">
+            <h2>Designer Sneakers</h2>
+            <p>Comfortable and stylish sneakers for any occasion.</p>
+            <p>$89.99 <span>Add to Cart</span></p>
+        </div>
+        <div></div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,101 @@
+.d1{
+    border:2px solid;color: red;
+    height: 100px;
+    padding:2px;
+    background-color: rgb(238,243, 247);
+}
+.p1{
+    color: red;
+    /* font-weight: bold; */
+}
+.d2{
+    border: 2px solid;color: red;
+    padding: 2px;
+    background-color:rgb(238,243, 247) ;
+}
+.p2{
+    color:green ;
+    font-weight: bold;
+}
+.d3{
+    border: 2px solid;color: red;
+    height: 120px;
+    width: 250px;
+    padding: 2px;
+    background-color:rgb(238,243, 247) ;
+}
+.p3{
+    color: blue;
+    font-weight: bold;
+}
+.d4{
+    border: 2px solid;color: red;
+    height: 120px;
+    width: 250px;
+    padding: 2px;
+    margin: 5px;
+    background-color:rgb(238,243, 247) ;
+}
+.p4{
+    color: blue;
+    font-weight: bold;
+}.d5{
+    border: 2px solid;color:red;
+    height: 120px;
+    width: 270px;
+    padding: 2px;
+    margin: 5px;
+    background-color:rgb(238,243, 247) ;
+}
+.p5{
+    color: blue;
+    font-weight: bold;
+}
+.d6{
+    border: 2px solid;color:red;
+    height: 90px;
+    margin: 5px;
+    background-color:rgb(238,243, 247) ;
+    box-sizing: ;
+    
+
+}
+.p6{
+    color: blue;
+    font-weight: bold;
+}
+.dd1{
+    background-color: rgba(11, 154, 157, 0.67);
+    height: 130px;
+    width: 250px;
+
+
+}
+.pp1{
+    color: white;
+    padding-left: 45%;
+
+}
+.dd2{
+    background-color: orangered;
+    height: 60px;
+    width: 50%;
+    margin: auto;
+
+}
+.pp2{
+    color: white;
+   padding-top: 1px; 
+   padding-left: 45%;
+}
+.dd3{
+    background-color:rgb(72, 61, 139);
+    height: 130px;
+    width: auto;
+    margin-top: 10px;
+    margin: 20px;
+}
+.pp3{
+    color: white;
+    padding: ;
+}
