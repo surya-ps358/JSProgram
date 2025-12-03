@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<style>
+        /* Mobile-friendly styles */
+@media (max-width: 768px) {
+    .navbar {
+        font-size: 14px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+    </style>
+<body>
+
+    <!-- Image Gallery -->
+<div class="gallery">
+    <div class="gallery-item">
+        <img src="image1.jpg" alt="Image 1" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal" />
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="image1.jpg" class="img-fluid" alt="Full Image">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="contactForm" action="#" method="POST">
+    <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+    <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+    <textarea id="message" class="form-control" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
+</div>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !email || !message) {
+            alert('Please fill out all fields.');
+            return;
+        }
+
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        alert('Your message has been sent!');
+        // Here, you would typically send the form data to the server.
+    });
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Developer Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f5f7fa; color: #333; scroll-behavior: smooth; }
+    .navbar { background: #212529; }
+    .navbar-brand, .nav-link { color: #fff !important; }
+    .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://source.unsplash.com/1600x900/?technology,code") center/cover no-repeat; height: 100vh; color: white; display: flex; justify-content: center; align-items: center; text-align: center; }
+    .hero h1 { font-size: 3rem; font-weight: bold; }
+    .about img { border-radius: 50%; width: 180px; }
+    .skill-card { transition: 0.3s; }
+    .skill-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    footer { background: #212529; color: white; padding: 20px; text-align: center; }
+    body.dark-mode { background: #121212; color: #f1f1f1; }
+    body.dark-mode .navbar, body.dark-mode footer { background: #000; }
+    #topBtn { display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99; border: none; background-color: #0dcaf0; color: white; cursor: pointer; padding: 10px; border-radius: 50%; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">MyPortfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><button class="btn btn-sm btn-light ms-2" onclick="toggleDarkMode()"></button></li>
+          <li class="nav-item"><button class="btn btn-sm btn-info ms-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div data-aos="fade-up">
+      <h1>Hi, I'm <span style="color:#0dcaf0">Pandurang</span></h1>
+      <p>A Passionate Java Developer | Fresher | Problem Solver</p>
+      <a href="resume.pdf" class="btn btn-info mt-3" download>📄 Download Resume</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about container py-5 text-center">
+    <h2 class="mb-4" data-aos="fade-right">About Me</h2>
+    <img src="https://via.placeholder.com/180" alt="Profile Picture" data-aos="zoom-in">
+    <p class="mt-3" data-aos="fade-up">
+      I am a fresher Java Developer skilled in Core Java, OOPs, JDBC, Spring Boot, and database concepts. 
+      I love building projects and solving real-world problems using Java. 
+      Looking forward to an opportunity to grow as a software developer.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="container py-5">
+    <h2 class="text-center mb-4" data-aos="fade-up">My Skills</h2>
+    <div class="row g-4">
+      <div class="col-md-3"><div class="card skill-card p-3 text-center" data-aos="flip-left"><h4>Java</h4></div></div>
+      <div class="col-md-3"><div class="card skill-card p-3 text-center" data-aos="flip-left"><h4>Spring Boot</h4></div></div>
+      <div class="col-md-3"><div class="card skill-card p-3 text-center" data-aos="flip-left"><h4>MySQL</h4></div></div>
+      <div class="col-md-3"><div class="card skill-card p-3 text-center" data-aos="flip-left"><h4>React.js</h4></div></div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="container py-5">
+    <h2 class="text-center mb-4" data-aos="fade-up">Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in"><div class="card h-100"><div class="card-body"><h5 class="card-title">Student Management System</h5><p class="card-text">Built using Java, JDBC, and MySQL. Features include CRUD operations and authentication.</p></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in"><div class="card h-100"><div class="card-body"><h5 class="card-title">E-Commerce Backend</h5><p class="card-text">REST APIs built with Spring Boot for product management, orders, and users.</p></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in"><div class="card h-100"><div class="card-body"><h5 class="card-title">Portfolio Website</h5><p class="card-text">A responsive and creative portfolio built with HTML, CSS, Bootstrap, and JavaScript.</p></div></div></div>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume" class="container py-5">
+    <h2 class="text-center mb-4" data-aos="fade-up">My Resume</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8" data-aos="fade-up">
+        <div class="card p-4 shadow">
+          <h4>👨🏻‍💻 Pandurang Suryawanshi</h4>
+          <p><strong>Role:</strong> Java Developer (Fresher)</p>
+          <p><strong>Education:</strong> B.Tech in Computer Science (2025)</p>
+          <p><strong>Technical Skills:</strong> Java, OOPs, JDBC, Spring Boot, MySQL, React.js, HTML, CSS, JavaScript</p>
+          <p><strong>Projects:</strong> Student Management System, E-Commerce Backend, Portfolio Website</p>
+          <p><strong>Achievements:</strong> Solved 200+ coding problems on LeetCode & HackerRank</p>
+          <p><strong>Career Objective:</strong> To leverage my Java development skills to contribute to innovative projects in a growth-oriented IT company.</p>
+          <div class="text-center mt-3">
+            <a href="resume.pdf" download class

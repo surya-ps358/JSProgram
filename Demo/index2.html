@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electronic Shop Portal</title>
+<style>
+  * { box-sizing: border-box; font-family: "Poppins", sans-serif; }
+  body { margin: 0; background: linear-gradient(135deg, #00c6ff, #0072ff); color: #333; }
+
+  header {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 800px;
+    background: #c7f96c;
+    margin: 40px auto;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+  }
+
+  h2 { text-align: center; color: #01050a; margin-bottom: 20px; }
+
+  input, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+
+  button {
+    background: #0072ff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover { background: #00c6ff; }
+
+  .hidden { display: none; }
+
+  .nav-bar { text-align: center; margin-bottom: 15px; }
+
+  .nav-bar button {
+    width: auto;
+    margin: 5px;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+
+  th { background: #0072ff; color: white; }
+
+  .action-btn {
+    padding: 6px 10px;
+    margin: 2px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .edit-btn { background: #3498db; }
+  .delete-btn { background: #e74c3c; }
+  .cart-btn { background: #27ae60; }
+  .remove-btn { background: #e67e22; }
+  .logout-btn { background: #f39c12; width: auto; }
+
+  footer {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+
+  #cart-count {
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 8px;
+    font-size: 12px;
+    vertical-align: top;
+  }
+</style>
+</head>
+<body>
+
+<header>Electronic Shop Portal</header>
+
+<!-- HOME PAGE -->
+<div id="home" class="container">
+  <h2>Welcome to Electronic Shop</h2>
+  <button onclick="showSection('admin-login')">Admin Login</button>
+  <button onclick="showSection('customer-login')">Customer Login</button>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="admin-login" class="container hidden">
+  <h2>Admin Login</h2>
+  <input id="adminUser" placeholder="Username">
+  <input id="adminPass" type="password" placeholder="Password">
+  <button onclick="adminLogin()">Login</button>
+  <button onclick="showSection('home')">Back</button>
+</div>
+
+<!-- CUSTOMER LOGIN -->
+<div id="customer-login" class="container hidden">
+  <h2>Customer Login</h2>
+  <input id="custName" placeholder="Enter Your Name">
+  <button onclick="customerLogin()">Login</button>
+  <button onclick="showSection('home')">Back</button>
+</div>
+
+<!-- ADMIN DASHBOARD -->
+<div id="admin-dashboard" class="container hidden">
+  <div class="nav-bar">
+    <button onclick="showAddProduct()">Add Product</button>
+    <button onclick="showAdminProducts()">View Products</button>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- ADD PRODUCT -->
+  <div id="add-product">
+    <h2>Add Product</h2>
+    <input id="pcode" placeholder="Product Code">
+    <input id="pname" placeholder="Product Name">
+    <input id="pcompany" placeholder="Company">
+    <input id="pprice" type="number" placeholder="Price">
+    <input id="pqty" type="number" placeholder="Quantity">
+    <button onclick="addProduct()">Add</button>
+  </div>
+
+  <!-- VIEW PRODUCTS -->
+  <div id="admin-products" class="hidden">
+    <h2>Product Inventory</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th><th>Name</th><th>Company</th><th>Price</th><th>Qty</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="adminTable"></tbody>
+    </table>
+  </div>
+
+  <!-- EDIT PRODUCT -->
+  <div id="edit-product" class="hidden">
+    <h2>Edit Product</h2>
+    <input id="editIndex" type="hidden">
+    <input id="editCode" disabled>
+    <input id="editName">
+    <input id="editCompany">
+    <input id="editPrice" type="number">
+    <input id="editQty" type="number">
+    <button onclick="updateProduct()">Update</button>
+    <button onclick="showAdminProducts()">Cancel</button>
+  </div>
+</div>
+
+<!-- CUSTOMER DASHBOARD -->
+<div id="customer-dashboard" class="container hidden">
+  <div class="nav-bar">
+    <button onclick="showCustomerProducts()">View Products</button>
+    <button onclick="showCart()">Cart (<span id="cart-count">0</span>)</button>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- PRODUCT LIST -->
+  <div id="customer-products">
+    <h2>Available Products</h2>
+    <table>
+      <thead>
+        <tr><th>Code</th><th>Name</th><th>Company</th><th>Price</th><th>Qty</th><th></th></tr>
+      </thead>
+      <tbody id="custTable"></tbody>
+    </table>
+  </div>
+
+  <!-- CART -->
+  <div id="customer-cart" class="hidden">
+    <h2>My Cart</h2>
+    <table>
+      <thead>
+        <tr><th>Code</th><th>Name</th><th>Price</th><th>Qty</th><th>Action</th></tr>
+      </thead>
+      <tbody id="cartTable"></tbody>
+    </table>
+  </div>
+</div>
+
+<footer>© 2025 Electronic Shop | Admin & Customer Portal</footer>
+
+<script>
+  // ===== Data =====
+  let products = [];
+  let cart = [];
+
+  // ===== Utility =====
+  function showSection(id) {
+    document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  function logout() {
+    showSection('home');
+  }
+
+  // ===== Admin =====
+  function adminLogin() {
+    const user = document.getElementById('adminUser').value;
+    const pass = document.getElementById('adminPass').value;
+    if (user === 'admin' && pass === 'admin123') {
+      showSection('admin-dashboard');
+      showAddProduct();
+    } else {
+      alert('Invalid admin credentials!');
+    }
+  }
+
+  function showAddProduct() {
+    document.getElementById('add-product').classList.remove('hidden');
+    document.getElementById('admin-products').classList.add('hidden');
+    document.getElementById('edit-product').classList.add('hidden');
+  }
+
+  function addProduct() {
+    const p = {
+      code: pcode.value,
+      name: pname.value,
+      company: pcompany.value,
+      price: pprice.value,
+      qty: pqty.value
+    };
+    if (!p.code || !p.name || !p.company || !p.price || !p.qty) {
+      alert('Please fill all fields!');
+      return;
+    }
+    products.push(p);
+    alert('Product added!');
+    pcode.value = pname.value = pcompany.value = pprice.value = pqty.value = '';
+    showAdminProducts();
+  }
+
+  function showAdminProducts() {
+    document.getElementById('add-product').classList.add('hidden');
+    document.getElementById('edit-product').classList.add('hidden');
+    document.getElementById('admin-products').classList.remove('hidden');
+    const tbody = document.getElementById('adminTable');
+    tbody.innerHTML = '';
+    products.forEach((p, i) => {
+      tbody.innerHTML += `
+        <tr>
+          <td>${p.code}</td><td>${p.name}</td><td>${p.company}</td>
+          <td>${p.price}</td><td>${p.qty}</td>
+          <td>
+            <span class="action-btn edit-btn" onclick="editProduct(${i})">Edit</span>
+            <span class="action-btn delete-btn" onclick="deleteProduct(${i})">Delete</span>
+          </td>
+        </tr>`;
+    });
+  }
+
+  function editProduct(i) {
+    const p = products[i];
+    document.getElementById('editIndex').value = i;
+    document.getElementById('editCode').value = p.code;
+    document.getElementById('editName').value = p.name;
+    document.getElementById('editCompany').value = p.company;
+    document.getElementById('editPrice').value = p.price;
+    document.getElementById('editQty').value = p.qty;
+    document.getElementById('edit-product').classList.remove('hidden');
+    document.getElementById('admin-products').classList.add('hidden');
+    document.getElementById('add-product').classList.add('hidden');
+  }
+
+  function updateProduct() {
+    const i = document.getElementById('editIndex').value;
+    products[i].name = document.getElementById('editName').value;
+    products[i].company = document.getElementById('editCompany').value;
+    products[i].price = document.getElementById('editPrice').value;
+    products[i].qty = document.getElementById('editQty').value;
+    alert('Updated!');
+    showAdminProducts();
+  }
+
+  function deleteProduct(i) {
+    if (confirm('Delete this product?')) {
+      products.splice(i, 1);
+      showAdminProducts();
+    }
+  }
+
+  // ===== Customer =====
+  function customerLogin() {
+    const name = document.getElementById('custName').value.trim();
+    if (!name) return alert('Enter name!');
+    showSection('customer-dashboard');
+    showCustomerProducts();
+  }
+
+  function showCustomerProducts() {
+    document.getElementById('customer-products').classList.remove('hidden');
+    document.getElementById('customer-cart').classList.add('hidden');
+    const tbody = document.getElementById('custTable');
+    tbody.innerHTML = '';
+    if (products.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6">No products available</td></tr>';
+      return;
+    }
+    products.forEach((p, i) => {
+      tbody.innerHTML += `
+        <tr>
+          <td>${p.code}</td><td>${p.name}</td><td>${p.company}</td>
+          <td>${p.price}</td><td>${p.qty}</td>
+          <td><span class="action-btn cart-btn" onclick="addToCart(${i})">Add to Cart</span></td>
+        </tr>`;
+    });
+  }
+
+  function addToCart(i) {
+    const prod = products[i];
+    const existing = cart.find(item => item.code === prod.code);
+    if (existing) existing.qty++;
+    else cart.push({...prod, qty: 1});
+    updateCartCount();
+    alert('Added to cart!');
+  }
+
+  function showCart() {
+    document.getElementById('customer-products').classList.add('hidden');
+    document.getElementById('customer-cart').classList.remove('hidden');
+    const tbody = document.getElementById('cartTable');
+    tbody.innerHTML = '';
+    if (cart.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5">Cart is empty</td></tr>';
+      return;
+    }
+    cart.forEach((c, i) => {
+      tbody.innerHTML += `
+        <tr>
+          <td>${c.code}</td><td>${c.name}</td><td>${c.price}</td><td>${c.qty}</td>
+          <td><span class="action-btn remove-btn" onclick="removeFromCart(${i})">Remove</span></td>
+        </tr>`;
+    });
+  }
+
+  function removeFromCart(i) {
+    cart.splice(i, 1);
+    updateCartCount();
+    showCart();
+  }
+
+  function updateCartCount() {
+    document.getElementById('cart-count').textContent = cart.length;
+  }
+</script>
+</body>
+</html>

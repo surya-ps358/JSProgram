@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    /* Basic Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg, #d8eef3, #b0bfc3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container {
+        background: #f7e886;
+        width: 380px;
+        padding: 40px 35px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .login-container:hover {
+        transform: translateY(-5px);
+    }
+
+    .login-container h2 {
+        color: #333;
+        margin-bottom: 25px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .input-group label {
+        font-weight: 500;
+        color: #333;
+        display: block;
+        margin-bottom: 8px;
+        /* margin-bottom: 20px;
+        text-align: left; */
+    }
+    
+
+    .input-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn {
+        width: 100%;
+        background: #007bff;
+        border: none;
+        color: #fff;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+        background: #0056b3;
+    }
+
+    .links {
+        margin-top: 20px;
+    }
+
+    .links a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .links a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 450px) {
+        .login-container {
+            width: 90%;
+            padding: 30px 20px;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <form action="alog" method="post">
+            <div class="input-group">
+                <label for="aname">Username</label>
+                <input type="text" id="aname" name="aname" placeholder="Enter your username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="apwd">Password</label>
+                <input type="password" id="apwd" name="apwd" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div class="links">
+                <p><a href="index.html">← Back to Home</a></p>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

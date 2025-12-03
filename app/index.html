@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Management System</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <style>
+  body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f7f7;
+  margin: 20px;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #1185d7;
+  
+}
+
+#menu {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border: 2px solid #454242;
+  text-align:center;
+  background-color: rgb(240, 215, 182);
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+}
+</style>
+</head>
+<body>
+  <h1>📚 Library Management System</h1>
+
+  <div id="menu">
+    <button onclick="showBooks()">Show All Books</button>
+    <button onclick="showStudents()">Show All Students</button>
+    <button onclick="addBookForm()">Add Book</button>
+  </div>
+
+  <div id="content"></div>
+
+  <!-- <script src="script.js"></script> -->
+  <script>
+    const books = [
+  { id: 201, title: "Java OOP", author: "James Gosling", available: true },
+  { id: 202, title: "Effective Java", author: "Joshua Bloch", available: true },
+  { id: 203, title: "Head First Java", author: "Kathy Sierra", available: false },
+];
+
+const students = [
+  { id: 101, name: "Pandurang Suryawanshi" },
+  { id: 102, name: "Shivam Shinde" },
+];
+
+function showBooks() {
+  let html = `<h2>📖 Book List</h2><table><tr><th>ID</th><th>Title</th><th>Author</th><th>Available</th></tr>`;
+  books.forEach(book => {
+    html += `<tr>
+               <td>${book.id}</td>
+               <td>${book.title}</td>
+               <td>${book.author}</td>
+               <td>${book.available ? "✅" : "❌"}</td>
+             </tr>`;
+  });
+  html += "</table>";
+  document.getElementById("content").innerHTML = html;
+}
+
+function showStudents() {
+  let html = `<h2>👨‍🎓 Student List</h2><table><tr><th>ID</th><th>Name</th></tr>`;
+  students.forEach(student => {
+    html += `<tr>
+               <td>${student.id}</td>
+               <td>${student.name}</td>
+             </tr>`;
+  });
+  html += "</table>";
+  document.getElementById("content").innerHTML = html;
+}
+
+function addBookForm() {
+  document.getElementById("content").innerHTML = `
+    <h2>➕ Add New Book</h2>
+    <form onsubmit="addBook(event)">
+      <label>Book ID:</label><br>
+      <input type="number" id="bookId" required><br><br>
+      <label>Title:</label><br>
+      <input type="text" id="title" required><br><br>
+      <label>Author:</label><br>
+      <input type="text" id="author" required><br><br>
+      <button type="submit">Add Book</button>
+    </form>
+  `;
+}
+
+function addBook(event) {
+  event.preventDefault();
+  const id = parseInt(document.getElementById("bookId").value);
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+
+  books.push({ id, title, author, available: true });
+  alert("🎉 Book added: " + title);
+  showBooks();
+}
+
+  </script>
+</body>
+</html>
